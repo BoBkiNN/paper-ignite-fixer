@@ -2,6 +2,6 @@
   "id": "${mod_id}",
   "version": "${mod_version}",
   "mixins": [
-    "example_mod.mixins.json"
+    "ignite_fixer.mixins.json"
   ]
 }
