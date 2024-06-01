@@ -13,19 +13,16 @@ import java.nio.file.Path;
 public class ReobfServerMixin {
 
     @Unique
-    private static @NotNull Path ignite_fixer$fixPath(String file){
-        return Path.of(file).toAbsolutePath();
-    }
-
-    @Unique
     private static @NotNull Path ignite_fixer$findPath(){
         var pJar = System.getProperty("ignite.paper.jar");
         var jar = System.getProperty("ignite.jar");
-        if (pJar != null){
-            return ignite_fixer$fixPath(pJar);
-        }
-        if (jar != null){
-            return ignite_fixer$fixPath(jar);
+        for (var name : new String[]{pJar, jar, "server.jar", "paper.jar"}){
+            if (name != null){
+                var f = Path.of(name).toAbsolutePath();
+                if (f.toFile().isFile()){
+                    return f;
+                }
+            }
         }
         throw new IllegalArgumentException("Failed to find server jar file");
     }
