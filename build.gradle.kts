@@ -26,9 +26,9 @@ dependencies {
 
     remapper("net.fabricmc:tiny-remapper:0.10.1:fat")
 
-    @Suppress("UNUSED_VARIABLE")
     val include = configurations.create("include")
     // We can use "include" configuration to add dependencies that will be included to jar
+    include("net.fabricmc:tiny-remapper:0.10.1:fat") {isTransitive = false}
 
     configurations.implementation.extendsFrom(configurations.named("include"))
 

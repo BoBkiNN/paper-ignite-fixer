@@ -4,6 +4,7 @@
   "package": "xyz.bobkinn.ignite_fixer.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MixinPluginRemapper",
     "ReobfServerMixin"
   ],
   "injectors": {
