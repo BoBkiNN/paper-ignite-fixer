@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URI;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.util.Locale;
 import java.util.Map;
 import java.util.jar.Manifest;
@@ -63,6 +60,7 @@ public class RemapUtil {
         var path = fs.getPath("META-INF", "MANIFEST.MF");
         try (var s = Files.newOutputStream(path)) {
             mf.write(s);
+        } catch (NoSuchFileException ignored){
         } catch (Exception e) {
             throw new RuntimeException("Failed to save manifest", e);
         }
